@@ -18,7 +18,10 @@
     "start": "cds run"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.102.6",
+    "@sap/ux-specification": "^1.102.9",
     "sqlite3": "^5.1.1"
-  }
+  },
+  "sapux": [
+    "app/project1"
+  ]
 }
