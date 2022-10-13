@@ -13,6 +13,67 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotation Term="UI.DataPoint" Qualifier="idRisksList">
+                <Record Type="UI.DataPointType">
+                    <PropertyValue Property="Title" String="Risks List" />
+                    <PropertyValue Property="Description" String="displaying the list of risks" />
+                    <PropertyValue Property="Value" Path="title" />
+                    <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Neutral"/>
+                </Record>
+            </Annotation>
+
+            <Annotation Term="UI.SelectionVariant" Qualifier="idSelection">
+                <Record>
+                    <PropertyValue Property="Parameters">
+                        <Collection>
+                            <Record Type="UI.Parameter">
+                                <PropertyValue Property="PropertyName" PropertyPath="ID" />
+                                <PropertyValue Property="PropertyValue" String="REPLACE_WITH_PARAMETER_VALUE" />
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="SelectOptions">
+                        <Collection>
+                            <Record Type="UI.SelectOptionType">
+                                <PropertyValue Property="PropertyName" PropertyPath="title" />
+                                <PropertyValue Property="Ranges">
+                                    <Collection>
+                                        <Record Type="UI.SelectionRangeType">
+                                        <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I" />
+                                        <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ" />
+                                        <PropertyValue Property="Low" String="filterValue" />
+                                        </Record>
+                                    </Collection>
+                                </PropertyValue>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+
+            <Annotations Target="RiskService.Risks">
+                <Annotation Term="UI.Identification" Qualifier="idid">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="REPLACE_WITH_DATAFIELD_LABEL"/>
+                            <PropertyValue Path="Value" Property="REPLACE_WITH_NEW_VALUE_PROPERTY" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/REPLACE_WITH_IMPORTANCE_TYPE_ENUM_DATAFIELD"/>
+                        </Record>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Label" String="REPLACE_WITH_URL_LABEL" />
+                            <PropertyValue Property="Value" String="REPLACE_WITH_VALUE" />
+                            <PropertyValue Property="Url" String="REPLACE_WITH_URL" />
+                        </Record>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="REPLACE_WITH_SEMANTIC_OBJECT" />
+                            <PropertyValue Property="Action" String="REPLACE_WITH_ACTION" />
+                            <PropertyValue Property="Label" String="REPLACE_WITH_INTENTBASED_LABEL" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/REPLACE_WITH_IMPORTANCE_TYPE_ENUM" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

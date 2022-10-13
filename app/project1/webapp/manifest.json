@@ -1,117 +1,156 @@
 {
-  "_version": "1.42.0",
-  "sap.app": {
-    "id": "project1",
-    "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
-    },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:ovp",
-      "version": "1.7.5-pre-20220908193056-6d581e00b.0",
-      "toolsId": "555b149c-83b6-4d19-931b-bb2a5007b587"
-    },
-    "dataSources": {
-      "mainService": {
-        "uri": "/service/risk/",
-        "type": "OData",
-        "settings": {
-          "annotations": [
-            "annotation"
-          ],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "4.0"
+    "_version": "1.42.0",
+    "sap.app": {
+        "id": "project1",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:ovp",
+            "version": "1.7.5-pre-20220908193056-6d581e00b.0",
+            "toolsId": "555b149c-83b6-4d19-931b-bb2a5007b587"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/service/risk/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
         }
-      },
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
-        "settings": {
-          "localUri": "annotations/annotation.xml"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
         }
-      }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.102.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "project1.i18n.i18n"
+                }
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntityType": "Risks",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "cards": {
+            "listcard": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.v4.list",
+                "settings": {
+                    "title": "REPLACE_WITH_TEXT",
+                    "entitySet": "Risks",
+                    "listType": "condensed",
+                    "listFlavor": "standard",
+                    "sortOrder": "REPLACE_WITH_SORT_ORDER_TYPE",
+                    "sortBy": "REPLACE_WITH_SORT_BY_TYPE",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#REPLACE_WITH_LINEITEM_ANNOTATION_PATH",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#REPLACE_WITH_DATAPOINT_ANNOTATION_PATH",
+                    "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#REPLACE_WITH_SELECTIONVARIANT_ANNOTATION_PATH",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#REPLACE_WITH_IDENTIFICATION_ANNOTATION_PATH",
+                    "tabs": [
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#REPLACE_WITH_LINEITEM_ANNOTATION_PATH",
+                            "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#REPLACE_WITH_SELECTIONVARIANT_ANNOTATION_PATH",
+                            "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#REPLACE_WITH_DATAPOINT_ANNOTATION_PATH",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#REPLACE_WITH_IDENTIFICATION_ANNOTATION_PATH",
+                            "value": "REPLACE_WITH_VALUE"
+                        }
+                    ]
+                }
+            },
+            "idcard": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.v4.charts.analytical",
+                "settings": {
+                    "title": "cardtitlt",
+                    "entitySet": "Risks",
+                    "subTitle": "sutitle"
+                }
+            }
+        },
+        "globalFilterControlType": "MacroFilterBar",
+        "bHeaderExpanded": true
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    },
+    "sap.ui.generic.app": {
+        "settings": {}
     }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": true,
-    "dependencies": {
-      "minUI5Version": "1.102.1",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.ushell": {},
-        "sap.fe.templates": {},
-        "sap.ovp": {},
-        "sap.ui.rta": {},
-        "sap.ui.layout": {}
-      }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "project1.i18n.i18n"
-        }
-      },
-      "mainModel": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {
-          "synchronizationMode": "None",
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true
-        }
-      },
-      "@i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
-      }
-    },
-    "resources": {
-      "css": []
-    },
-    "routing": {
-      "config": {},
-      "routes": [],
-      "targets": {}
-    }
-  },
-  "sap.ovp": {
-    "globalFilterModel": "mainModel",
-    "globalFilterEntityType": "Risks",
-    "containerLayout": "resizable",
-    "enableLiveFilter": true,
-    "considerAnalyticalParameters": false,
-    "cards": {},
-    "globalFilterControlType": "MacroFilterBar"
-  },
-  "sap.fiori": {
-    "registrationIds": [],
-    "archeType": "analytical"
-  }
 }
